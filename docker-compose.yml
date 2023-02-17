@@ -20,7 +20,8 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./cache:/root/.cache
+      # - ./cache:/root/.cache
+      - ./static:/app/static
 
 # volumes:
 #   cache:
