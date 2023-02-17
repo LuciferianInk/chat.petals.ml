@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  app:
+    image: ghcr.io/luciferianink/chat.petals.ml:latest
+    platform: linux/amd64
+    restart: always
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    build:
+      context: .
+      dockerfile: Dockerfile
+      shm_size: '1gb'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.relay.rule=Host(`originalsin.ml`)
+      - traefik.http.routers.relay.entrypoints=websecure
+      - traefik.http.routers.relay.tls.certresolver=relay
+    volumes:
+      - cache:/root/.cache
+
+  proxy:
+    image: traefik:v2.9
+    restart: always
+    command:
+      - --api.insecure=false
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.relay.acme.tlschallenge=true
+      - --certificatesresolvers.relay.acme.email=LuciferianInk@protonmail.com
+      - --certificatesresolvers.relay.acme.storage=/certs/acme.json
+    ports:
+      - 443:443
+    volumes:
+      - certs:/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  certs:
+  cache:

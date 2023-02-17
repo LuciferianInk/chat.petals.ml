@@ -26,6 +26,13 @@ gunicorn app:app --bind 0.0.0.0:5000 --threads 100 --timeout 1000
 > **Note:** Python 3.7+ required, and it is important to use `--threads` (not `--workers`) to ensure the HTTP API reuses inference sessions correctly.
 Each session may use a separate thread, so you need to have as many threads as many concurrent users you'd like to support.
 
+To run this app in Docker:
+
+```
+docker-compose build
+docker-compose up
+```
+
 The chat uses the WebSocket API under the hood.
 
 ## APIs

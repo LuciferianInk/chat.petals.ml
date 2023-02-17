@@ -1,0 +1,52 @@
+FROM arm64v8/debian:stable
+
+MAINTAINER BigScience
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    python3-pip \
+    gcc \
+    g++ \
+    python3-dev \
+    sed \
+    tar \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp
+
+RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
+    tar -xzf go.tar.gz -C /usr/local
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+WORKDIR /app
+
+COPY . ./
+
+RUN sed -i '1d' requirements.txt && \
+    pip install -r requirements.txt
+
+RUN pip install --upgrade git+https://github.com/bigscience-workshop/petals@no-cpufeature
+
+RUN git clone https://github.com/learning-at-home/hivemind
+
+RUN cd hivemind && pip install . --global-option="--buildgo"
+
+WORKDIR /tmp
+
+RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
+    cd go-libp2p-daemon/p2pd && \
+    git checkout v0.3.16 && \
+    go build . && \
+    mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
+    chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
+
+RUN rm -rf /tmp/*
+
+EXPOSE 5000
+
+WORKDIR /app
+
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000", "--threads", "100", "--timeout", "1000"]

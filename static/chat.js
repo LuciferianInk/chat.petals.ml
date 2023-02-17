@@ -35,7 +35,11 @@ const mode = {
 let current_mode = mode.CHATBOT;
 
 function openSession() {
-  ws = new WebSocket(`ws://${location.host}/api/v2/generate`);
+  let secure = 'ws'
+  if (location.protocol === 'https:') {
+    secure = 'wss'
+  }
+  ws = new WebSocket(`${secure}://${location.host}/api/v2/generate`);
   ws.onopen = () => {
     ws.send(JSON.stringify({type: "open_inference_session", model: curModel, max_length: sessionMaxLength}));
     ws.onmessage = event => {
