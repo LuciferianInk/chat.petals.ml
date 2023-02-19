@@ -147,7 +147,7 @@ main p {
 }
 
 .human-replica {
-  background-color: #f7f7ff;
+  background-color: #fff7f7;
   margin-left: auto;
   margin-right: 0;
 }
@@ -158,7 +158,7 @@ main p {
 }
 
 .human-replica textarea {
-  background-color: #f7f7ff !important;
+  background-color: #fff7f7 !important;
   border: none;
   resize: none;
   padding: 0;
@@ -171,7 +171,7 @@ main p {
 }
 
 .ai-replica {
-  background-color: #fff7f7;
+  background-color: #e9f3ff;
 }
 
 .speed, .suggest-join {
@@ -184,7 +184,7 @@ main p {
 
 .welcome {
   font-size: 9pt;
-  background-color: #fff7f7;
+  background-color: #e9f3ff;
   margin-left: auto;
   margin-right: 0;
   max-width: 350px;
@@ -206,4 +206,8 @@ main p {
 
 .reset-btn {
   font-size: 9pt;
+}
+
+.hidden {
+  display: none;
 }

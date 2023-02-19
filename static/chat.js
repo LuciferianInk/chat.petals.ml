@@ -81,11 +81,11 @@ function sendReplica() {
       '<p class="ai-replica">' +
         `<span class="text">${aiPrompt}</span>` +
         '<span class="loading-animation"></span>' +
-        '<span class="speed" style="display: none;"></span>' +
-        '<span class="suggest-join" style="display: none;">' +
-          'This speed is slower than expected due to a high load. You can increase Petals capacity by ' +
-          '<a target="_blank" href="https://github.com/bigscience-workshop/petals#connect-your-gpu-and-increase-petals-capacity">connecting your GPU</a>.' +
-        '</span>' +
+        // '<span class="speed" style="display: none;"></span>' +
+        // '<span class="suggest-join" style="display: none;">' +
+        //   'This speed is slower than expected due to a high load. You can increase Petals capacity by ' +
+        //   '<a target="_blank" href="https://github.com/bigscience-workshop/petals#connect-your-gpu-and-increase-petals-capacity">connecting your GPU</a>.' +
+        // '</span>' 
       '</p>'));
     animateLoading();
   } else {
@@ -234,7 +234,8 @@ function resetDialogue() {
   return true;
 }
 
-const animFrames = ["⌛", "🧠"];
+const animFrames = ["⠠","⠏","⠲","⠢","⠐","⠕","⠥","⠭","⠞","⠱","⠟","⠒","⠇","⠙","⠮","⠪","⠑","⠷","⠿","⠊","⠂","⠅","⠡","⠬","⠝","⠰","⠽","⠻","⠧","⠃","⠼","⠹","⠌","⠵","⠄","⠎","⠫","⠳","⠯","⠗","⠉","⠁","⠛","⠸","⠋","⠺","⠔","⠓","⠜","⠆","⠍",];
+
 var curFrame = 0;
 
 function animateLoading() {
