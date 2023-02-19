@@ -75,7 +75,7 @@ function isWaitingForInputs() {
 
 function sendReplica() {
   if (isWaitingForInputs()) {
-    const aiPrompt = (current_mode === mode.CHATBOT) ? 'AI:' : '';
+    const aiPrompt = (current_mode === mode.CHATBOT) ? 'Devel:' : '';
     $('.human-replica:last').text($('.human-replica:last textarea').val());
     $('.dialogue').append($(
       '<p class="ai-replica">' +
@@ -197,7 +197,7 @@ function retry() {
 }
 
 function appendTextArea() {
-  const humanPrompt = (current_mode === mode.CHATBOT) ? "Human: " : "";
+  const humanPrompt = (current_mode === mode.CHATBOT) ? "Research: " : "";
   $('.dialogue').append($(
     `<p class="human-replica"><textarea class="form-control" id="exampleTextarea" rows="2">${humanPrompt}</textarea></p>`
   ));
@@ -253,11 +253,11 @@ $(() => {
     if (resetDialogue()) {
       const textarea = $('.human-replica textarea');
       textarea.val(
-        'Human: A cat sat on a mat.\n\n' +
-        'AI: Un gato se sentó en una estera.\n\n' +
-        'Human: A brown fox jumps over the lazy dog.\n\n' +
-        'AI: Un zorro marrón salta sobre el perro perezoso.\n\n' +
-        'Human: Who is the president of the United States?'
+        'Research: A cat sat on a mat.\n\n' +
+        'Devel: Un gato se sentó en una estera.\n\n' +
+        'Research: A brown fox jumps over the lazy dog.\n\n' +
+        'Devel: Un zorro marrón salta sobre el perro perezoso.\n\n' +
+        'Research: Who is the president of the United States?'
       );
       textarea[0].style.height = textarea[0].scrollHeight + "px";
       textarea.focus();
