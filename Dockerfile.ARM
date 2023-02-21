@@ -25,10 +25,7 @@ WORKDIR /app
 
 COPY . ./
 
-RUN sed -i '1d' requirements.txt && \
-    pip install -r requirements.txt
-
-RUN pip install --upgrade git+https://github.com/bigscience-workshop/petals@no-cpufeature
+RUN pip install --upgrade git+https://github.com/bigscience-workshop/petals
 
 RUN git clone https://github.com/learning-at-home/hivemind
 

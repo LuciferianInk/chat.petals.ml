@@ -14,7 +14,7 @@ services:
       shm_size: '1gb'
     labels:
       - traefik.enable=true
-      - traefik.http.routers.relay.rule=Host(`originalsin.ml`)
+      - traefik.http.routers.relay.rule=Host(`originalsin.ml`,`src.originalsin.ml`)
       - traefik.http.routers.relay.entrypoints=websecure
       - traefik.http.routers.relay.tls.certresolver=relay
     volumes:
