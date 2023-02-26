@@ -178,12 +178,16 @@ main p {
   background-color: #d2e6fd;
 }
 
-.speed, .suggest-join {
+.speed, .generation-controls, .suggest-join {
   display: block;
   color: #999;
   font-size: 9pt;
   line-height: 1.25;
   margin-top: 7px;
+}
+
+.generation-controls a {
+  color: #999;
 }
 
 .welcome {

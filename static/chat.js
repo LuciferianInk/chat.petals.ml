@@ -33,6 +33,7 @@ const mode = {
   FEW_SHOT: 2,
 };
 let current_mode = mode.CHATBOT;
+let stop = false;
 
 function openSession() {
   let secure = 'ws'
@@ -88,6 +89,11 @@ function sendReplica() {
         // '</span>' 
       '</p>'));
     animateLoading();
+    $('.stop-generation').click(e => {
+      e.preventDefault();
+      console.log("Stop generation");
+      stop = true;
+    });
   } else {
     $('.loading-animation').show();
   }
@@ -150,7 +156,7 @@ function receiveReplica(inputs) {
     }
     lastReplica.text(newText);
 
-    if (!response.stop) {
+    if (!response.stop && !stop) {
       if (nRequests >= 1) {
         const stepsPerSecond = totalElapsed / nRequests / 1000;
         $('.speed')
@@ -161,8 +167,10 @@ function receiveReplica(inputs) {
         }
       }
     } else {
-      $('.loading-animation, .speed, .suggest-join').remove();
+      $('.loading-animation, .speed, .suggest-join, .generation-controls').remove();
+      resetSession();
       appendTextArea();
+      stop = false;
     }
   };
 }
