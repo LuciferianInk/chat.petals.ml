@@ -2,15 +2,20 @@ version: '3.9'
 
 services:
   app:
-    image: ghcr.io/luciferianink/chat.petals.ml:latest
+    image: ghcr.io/luciferianink/originalsin.ml:latest
     restart: unless-stopped
-    ulimits:
-      memlock: -1
-      stack: 67108864
+    # ulimits:
+    #   memlock: -1
+    #   stack: 67108864
     build:
       context: .
       dockerfile: Dockerfile
-      shm_size: '1gb'
+      # shm_size: '1gb'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 5000M
     # deploy:
     #   resources:
     #     reservations:
@@ -19,9 +24,12 @@ services:
     #           capabilities: [gpu]
     ports:
       - 5000:5000
+    environment:
+      MODEL_NAMES: '["bigscience/bloom-7b1-petals"]'
+      DEFAULT_MODEL_NAME: bigscience/bloom-7b1-petals
     volumes:
-      # - ./cache:/root/.cache
+      - cache:/root/.cache
       - ./:/app
 
-# volumes:
-#   cache:
+volumes:
+  cache:

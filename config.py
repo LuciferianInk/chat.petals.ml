@@ -1,8 +1,10 @@
+import os
+import json
 import torch
 
 
-MODEL_NAMES = ["bigscience/bloomz-petals"]
-DEFAULT_MODEL_NAME = "bigscience/bloom-petals"
+MODEL_NAMES = json.loads(os.environ['MODEL_NAMES'])
+DEFAULT_MODEL_NAME = os.environ['DEFAULT_MODEL_NAME']
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 TORCH_DTYPE = torch.float32

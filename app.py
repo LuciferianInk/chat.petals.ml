@@ -1,6 +1,7 @@
+import os
 import hivemind
 import torch
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_sock import Sock
 from transformers import BloomTokenizerFast
@@ -32,7 +33,9 @@ sock = Sock(app)
 
 @app.route("/")
 def main_page():
-    return app.send_static_file("index.html")
+    default_model_name = os.environ['DEFAULT_MODEL_NAME']
+    return render_template("index.html", default_model_name=default_model_name)
+    # return app.send_static_file("index.html")
 
 
 import http_api

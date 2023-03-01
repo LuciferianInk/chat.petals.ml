@@ -29,10 +29,13 @@ services:
       - --providers.docker.exposedbydefault=false
       - --entrypoints.websecure.address=:443
       - --certificatesresolvers.relay.acme.tlschallenge=true
-      - --certificatesresolvers.relay.acme.email=LuciferianInk@protonmail.com
+      - --certificatesresolvers.relay.acme.email=LuciferianInk@proton.me
       - --certificatesresolvers.relay.acme.storage=/certs/acme.json
     ports:
       - 443:443
+    environment:
+      MODEL_NAMES: '["bigscience/bloom-7b1-petals", "bigscience/bloomz-petals"]'
+      DEFAULT_MODEL_NAME: bigscience/bloomz-petals
     volumes:
       - certs:/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
