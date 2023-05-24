@@ -73,6 +73,12 @@ def http_api_generate():
         top_p = get_typed_arg("top_p", float)
         max_length = get_typed_arg("max_length", int)
         max_new_tokens = get_typed_arg("max_new_tokens", int)
+        penalty_alpha = request.get("penalty_alpha", int, None),
+        repetition_penalty = request.get("repetition_penalty", float, 1.0),
+        encoder_repetition_penalty = request.get("encoder_repetition_penalty", float, 1.0),
+        no_repeat_ngram_size = request.get("no_repeat_ngram_size", int, 0),
+        encoder_no_repeat_ngram_size = request.get("encoder_no_repeat_ngram_size", int, 0),
+        renormalize_logits = request.get("renormalize_logits", bool, True),
         session_id = request.values.get("session_id")
         logger.info(f"generate(), model={repr(model_name)}, session_id={repr(session_id)}, inputs={repr(inputs)}")
 
@@ -106,6 +112,12 @@ def http_api_generate():
                 top_p=top_p,
                 max_length=max_length,
                 max_new_tokens=max_new_tokens,
+                penalty_alpha=penalty_alpha,
+                repetition_penalty=repetition_penalty,
+                encoder_repetition_penalty=encoder_repetition_penalty,
+                no_repeat_ngram_size=no_repeat_ngram_size,
+                encoder_no_repeat_ngram_size=encoder_no_repeat_ngram_size,
+                renormalize_logits=renormalize_logits,
                 session=session,
             )
         outputs = tokenizer.decode(outputs[0, n_input_tokens:])

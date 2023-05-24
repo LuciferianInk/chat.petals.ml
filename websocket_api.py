@@ -54,6 +54,12 @@ def ws_api_generate(ws):
                         top_p=request.get("top_p"),
                         max_length=request.get("max_length"),
                         max_new_tokens=request.get("max_new_tokens"),
+                        penalty_alpha = request.get("penalty_alpha", int, None),
+                        repetition_penalty = request.get("repetition_penalty", float, 1.0),
+                        encoder_repetition_penalty = request.get("encoder_repetition_penalty", float, 1.0),
+                        no_repeat_ngram_size = request.get("no_repeat_ngram_size", int, 0),
+                        encoder_no_repeat_ngram_size = request.get("encoder_no_repeat_ngram_size", int, 0),
+                        renormalize_logits = request.get("renormalize_logits", bool, True),
                         session=session,
                     )
                     outputs = tokenizer.decode(outputs[0, n_input_tokens:])
