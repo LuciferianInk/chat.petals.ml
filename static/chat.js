@@ -25,13 +25,13 @@ var curModel = default_model_name;
 
 const generationParams = {
   do_sample: 1,
-  temperature: 0.9,
+  temperature: 1.023,
   top_k: 4,
   penalty_alpha: 0.6,
   repetition_penalty: 2.3,
   encoder_repetition_penalty: 2.3,
   no_repeat_ngram_size: 4,
-  encoder_no_repeat_ngram_size: 4,
+  encoder_no_repeat_ngram_size: 0,
   renormalize_logits: true
 };
 
