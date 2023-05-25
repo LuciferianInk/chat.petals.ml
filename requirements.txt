@@ -3,3 +3,4 @@ Flask
 flask-sock
 flask-cors
 gunicorn
+transformers==4.29.2
