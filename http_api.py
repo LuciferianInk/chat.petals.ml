@@ -73,12 +73,12 @@ def http_api_generate():
         top_p = get_typed_arg("top_p", float)
         max_length = get_typed_arg("max_length", int)
         max_new_tokens = get_typed_arg("max_new_tokens", int)
-        penalty_alpha = get_typed_arg("penalty_alpha", int, None),
-        repetition_penalty = get_typed_arg("repetition_penalty", float, 1.0),
-        encoder_repetition_penalty = get_typed_arg("encoder_repetition_penalty", float, 1.0),
-        no_repeat_ngram_size = get_typed_arg("no_repeat_ngram_size", int, 0),
-        encoder_no_repeat_ngram_size = get_typed_arg("encoder_no_repeat_ngram_size", int, 0),
-        renormalize_logits = get_typed_arg("renormalize_logits", bool, True),
+        # penalty_alpha = get_typed_arg("penalty_alpha", int, None),
+        # repetition_penalty = get_typed_arg("repetition_penalty", float, 1.0),
+        # encoder_repetition_penalty = get_typed_arg("encoder_repetition_penalty", float, 1.0),
+        # no_repeat_ngram_size = get_typed_arg("no_repeat_ngram_size", int, 0),
+        # encoder_no_repeat_ngram_size = get_typed_arg("encoder_no_repeat_ngram_size", int, 0),
+        # renormalize_logits = get_typed_arg("renormalize_logits", bool, True),
         session_id = request.values.get("session_id")
         logger.info(f"generate(), model={repr(model_name)}, session_id={repr(session_id)}, inputs={repr(inputs)}")
 
