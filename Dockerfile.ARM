@@ -1,4 +1,4 @@
-FROM arm64v8/debian:stable-20230411
+FROM arm64v8/debian:stable
 
 MAINTAINER BigScience
 
