@@ -1,4 +1,4 @@
-FROM arm64v8/debian:stable
+FROM arm64v8/ubuntu:stable
 
 MAINTAINER BigScience
 
@@ -58,9 +58,9 @@ COPY . ./
 
 # RUN pip install pyopenssl
 
-ENV GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
-ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
-ENV CFLAGS=-fno-wrapv
+# ENV GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+# ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+# ENV CFLAGS=-fno-wrapv
 
 RUN pip install -r requirements.txt --break-system-packages
 
