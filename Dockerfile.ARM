@@ -60,6 +60,7 @@ COPY . ./
 
 ENV GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+ENV CFLAGS=-fno-wrapv
 
 RUN pip install -r requirements.txt --break-system-packages
 
