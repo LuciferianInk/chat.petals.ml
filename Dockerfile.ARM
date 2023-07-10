@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:23.10
+FROM arm64v8/debian:stable
 
 MAINTAINER BigScience
 
@@ -61,6 +61,10 @@ COPY . ./
 # ENV GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 # ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 # ENV CFLAGS=-fno-wrapv
+
+RUN python -m venv /opt/env/petals
+
+RUN . /opt/env/petals
 
 RUN pip install -r requirements.txt --break-system-packages
 
