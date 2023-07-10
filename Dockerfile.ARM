@@ -1,4 +1,4 @@
-FROM arm64v8/debian:stable-20230411
+FROM arm64v8/debian:stable
 
 MAINTAINER BigScience
 
@@ -26,7 +26,7 @@ WORKDIR /app
 COPY . ./
 
 RUN sed -i '1d' requirements.txt && \
-    pip install -r requirements.txt
+    pip install --break-system-packages -r requirements.txt
 
 RUN pip install --upgrade git+https://github.com/LuciferianInk/petals
 
