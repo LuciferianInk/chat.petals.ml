@@ -10,6 +10,7 @@ RUN apt-get update \
     g++ \
     sed \
     tar \
+    software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
 RUN add-apt-repository ppa:deadsnakes/ppa && \
