@@ -38,11 +38,11 @@ COPY . ./
 
 # RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
 
-RUN pip install -r requirements.txt
+RUN pip install --break-system-packages -r requirements.txt
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
-RUN cd hivemind && pip install . --global-option="--buildgo"
+RUN cd hivemind && pip install . --break-system-packages --global-option="--buildgo"
 
 WORKDIR /tmp
 
