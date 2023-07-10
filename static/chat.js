@@ -1,25 +1,11 @@
 const models = {
-  "bigscience/bloomz-petals": {
-    name: "BLOOMZ-176B",
-    href: "https://huggingface.co/bigscience/bloomz",
+  "enoch/llama-65b-hf": {
+    name: "LLaMA-65b",
+    href: "https://huggingface.co/enoch/llama-65b-hf",
     sepToken: "\n\n",
     stopToken: "</s>",
     extraStopSequences: ["\n\nHuman"],
-  },
-  "bigscience/bloom-petals": {
-    name: "regular BLOOM-176B",
-    href: "https://huggingface.co/bigscience/bloom",
-    sepToken: "\n\n",
-    stopToken: "\n\n",
-    extraStopSequences: [],
-  },
-  "bigscience/bloom-7b1-petals": {
-    name: "small BLOOM-7B",
-    href: "https://huggingface.co/bigscience/bloom-7b1-petals",
-    sepToken: "\n\n",
-    stopToken: "\n\n",
-    extraStopSequences: [],
-  },
+  }
 };
 var curModel = default_model_name;
 

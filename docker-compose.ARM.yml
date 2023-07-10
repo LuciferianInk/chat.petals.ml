@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile.ARM
       shm_size: '1gb'
     environment:
-      MODEL_NAMES: '["bigscience/bloom-7b1-petals", "bigscience/bloomz-petals"]'
+      MODEL_NAMES: '["enoch/llama-65b-hf"]'
       DEFAULT_MODEL_NAME: bigscience/bloomz-petals
     labels:
       - traefik.enable=true
