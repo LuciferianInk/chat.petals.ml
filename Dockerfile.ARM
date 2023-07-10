@@ -45,11 +45,11 @@ COPY . ./
 
 # RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
 
-RUN wget -c https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz
+RUN wget -c https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tar.xz
 
-RUN tar -Jxvf Python-3.11.4.tar.xz
+RUN tar -Jxvf Python-3.11.3.tar.xz
 
-RUN cd Python-3.11.4 && \
+RUN cd Python-3.11.3 && \
     ./configure --enable-optimizations && \
     make altinstall && \
     update-alternatives --install /usr/bin/python python /usr/local/bin/python3.11 1 && \
