@@ -52,6 +52,8 @@ RUN cd Python-3.11.4 && \
     update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.11 1 && \
     python --version
 
+RUN pip install pyopenssl
+
 RUN pip install -r requirements.txt
 
 RUN git clone https://github.com/learning-at-home/hivemind
