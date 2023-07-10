@@ -65,7 +65,7 @@ COPY . ./
 
 RUN python3 -m venv /opt/env/petals
 
-RUN . /opt/env/petals
+RUN . /opt/env/petals/bin/activate
 
 RUN pip install -r requirements.txt --break-system-packages
 
