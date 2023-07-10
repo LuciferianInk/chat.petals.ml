@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:stable
+FROM arm64v8/ubuntu:23.10
 
 MAINTAINER BigScience
 
