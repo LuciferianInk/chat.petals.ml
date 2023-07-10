@@ -62,7 +62,7 @@ COPY . ./
 # ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 # ENV CFLAGS=-fno-wrapv
 
-RUN python -m venv /opt/env/petals
+RUN python3 -m venv /opt/env/petals
 
 RUN . /opt/env/petals
 
