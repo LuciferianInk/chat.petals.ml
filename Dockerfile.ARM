@@ -1,4 +1,4 @@
-FROM arm64v8/debian:bullseye
+FROM arm64v8/debian:stable
 
 MAINTAINER BigScience
 
@@ -40,9 +40,9 @@ COPY . ./
 
 RUN pip install -r requirements.txt
 
-# RUN git clone https://github.com/learning-at-home/hivemind
+RUN git clone https://github.com/learning-at-home/hivemind
 
-# RUN cd hivemind && pip install . --global-option="--buildgo"
+RUN cd hivemind && pip install . --global-option="--buildgo"
 
 WORKDIR /tmp
 
