@@ -18,6 +18,8 @@ RUN apt-get update \
     software-properties-common \
     checkinstall \
     libssl-dev \
+    libffi-dev \
+    openssl \
     && rm -rf /var/lib/apt/lists/*
 
 # RUN add-apt-repository ppa:deadsnakes/ppa && \
