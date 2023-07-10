@@ -32,20 +32,20 @@ WORKDIR /app
 
 COPY . ./
 
-RUN pip3 install --break-system-packages --upgrade pip
+# RUN pip3 install --break-system-packages --upgrade pip
 
-RUN python3 -m pip install --break-system-packages --upgrade setuptools
+# RUN python3 -m pip install --break-system-packages --upgrade setuptools
 
-RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
+# RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
 
 RUN sed -i '1d' requirements.txt && \
-    pip install --break-system-packages -r requirements.txt
+    pip install -r requirements.txt
 
-RUN pip install git+https://github.com/LuciferianInk/petals --break-system-packages
+RUN pip install git+https://github.com/LuciferianInk/petals
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
-RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
+RUN cd hivemind && pip install . --global-option="--buildgo"
 
 WORKDIR /tmp
 
