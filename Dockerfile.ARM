@@ -25,6 +25,12 @@ WORKDIR /app
 
 COPY . ./
 
+RUN pip3 install --upgrade pip
+
+RUN python3 -m pip install --upgrade setuptools
+
+RUN pip3 install --no-cache-dir  --force-reinstall -Iv grpcio
+
 RUN sed -i '1d' requirements.txt && \
     pip install --break-system-packages -r requirements.txt
 
