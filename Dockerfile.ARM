@@ -16,6 +16,8 @@ RUN apt-get update \
     wget \
     build-essential \
     software-properties-common \
+    checkinstall \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # RUN add-apt-repository ppa:deadsnakes/ppa && \
