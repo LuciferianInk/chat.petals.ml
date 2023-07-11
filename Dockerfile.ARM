@@ -84,11 +84,11 @@ COPY . ./
 
 # RUN sed -i '<line_number>d' <filename>
 
-RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 --break-system-packages
+RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 varint==1.0.2 --break-system-packages
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
-RUN cd hivemind && pip install . --global-option="--buildgo"
+RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
 
 RUN pip install -r requirements.txt --break-system-packages
 
