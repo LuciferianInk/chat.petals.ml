@@ -69,11 +69,21 @@ COPY . ./
 
 # RUN pip install setuptools== 67.7.2 --upgrade --force-reinstall --break-system-packages
 
-RUN pip install -r requirements.txt --break-system-packages
+# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh && \
+#   bash install_miniconda.sh -b -p /opt/conda && rm install_miniconda.sh
+# ENV PATH="/opt/conda/bin:${PATH}"
+
+# RUN conda install python~=3.8 pip && \
+#     pip install --no-cache-dir torch torchvision torchaudio && \
+#     conda clean --all
+
+# RUN sed -i '<line_number>d' <filename>
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
 RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
+
+RUN pip install -r requirements.txt --break-system-packages
 
 WORKDIR /tmp
 
