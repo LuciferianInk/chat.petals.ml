@@ -7,8 +7,6 @@ RUN apt-get update \
     cmake \
     pkgconf \
     gfortran \
-    libflang-17-dev \
-    flang-17 \
     curl \
     git \
     gcc \
