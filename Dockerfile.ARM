@@ -79,6 +79,8 @@ COPY . ./
 
 # RUN sed -i '<line_number>d' <filename>
 
+RUN pip install torch>=1.9.0 --break-system-packages
+
 RUN git clone https://github.com/learning-at-home/hivemind
 
 RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
