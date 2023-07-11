@@ -1,5 +1,5 @@
 git+https://github.com/LuciferianInk/petals
-grpcio-tools==1.39.0
+grpcio-tools==1.34.1
 Flask
 flask-sock
 flask-cors
