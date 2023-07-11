@@ -88,7 +88,7 @@ RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 --break-system-pac
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
-RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
+RUN cd hivemind && pip install . --global-option="--buildgo" --no-use-pep517 --break-system-packages
 
 RUN pip install -r requirements.txt --break-system-packages
 
