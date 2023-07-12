@@ -51,15 +51,15 @@ COPY . ./
 
 # RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
 
-RUN wget -c https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tar.xz
+RUN wget -c https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
 
-RUN tar -Jxvf Python-3.11.3.tar.xz
+RUN tar -Jxvf Python-3.9.17.tar.xz
 
-RUN cd Python-3.11.3 && \
+RUN cd Python-3.9.17 && \
     ./configure --enable-optimizations && \
     make altinstall && \
-    update-alternatives --install /usr/bin/python python /usr/local/bin/python3.11 1 && \
-    update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.11 1 && \
+    update-alternatives --install /usr/bin/python python /usr/local/bin/python3.9 1 && \
+    update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.9 1 && \
     python --version
 
 RUN pip install pyopenssl
@@ -84,13 +84,13 @@ RUN pip install pyopenssl
 
 # RUN sed -i '<line_number>d' <filename>
 
-RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 varint==1.0.2 sortedcontainers==2.4.0 --break-system-packages
+RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 varint==1.0.2 sortedcontainers==2.4.0
 
 RUN git clone https://github.com/learning-at-home/hivemind
 
-RUN cd hivemind && pip install . --global-option="--buildgo" --break-system-packages
+RUN cd hivemind && pip install . --global-option="--buildgo"
 
-RUN pip install -r requirements.txt --break-system-packages
+RUN pip install -r requirements.txt
 
 WORKDIR /tmp
 
