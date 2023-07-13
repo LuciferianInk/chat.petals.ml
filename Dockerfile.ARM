@@ -2,29 +2,12 @@ FROM arm64v8/debian:bullseye
 
 MAINTAINER BigScience
 
-# RUN apk update && \
-#     apk add --no-cache \
-#     alpine-sdk \
-#     cmake \
-#     cairo-dev \
-#     curl \
-#     g++ \
-#     gcc \
-#     git \
-#     go \
-#     pkgconf \
-#     python3 \
-#     py3-pip \
-#     tar \
-#     wget
-
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     cmake \
     pkgconf \
     gfortran \
     libopenblas-dev \
-    # libxsimd-dev \
     curl \
     git \
     gcc \
@@ -44,76 +27,12 @@ RUN apt-get update \
     openssl \
     && rm -rf /var/lib/apt/lists/*
 
-# RUN add-apt-repository ppa:deadsnakes/ppa && \
-#     apt-get update && \
-#     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-#     python3.9 \
-#     python3-pip
-
 WORKDIR /app
 
 COPY . ./
 
-# RUN pip3 install --break-system-packages --upgrade pip
-
-# RUN python3 -m pip install --break-system-packages --upgrade setuptools
-
-# RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
-
-# RUN wget -c https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
-
-# RUN tar -Jxvf Python-3.9.17.tar.xz
-
-# RUN cd Python-3.9.17 && \
-#     ./configure --enable-optimizations && \
-#     make altinstall && \
-#     update-alternatives --install /usr/bin/python python /usr/local/bin/python3.9 1 && \
-#     update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.9 1 && \
-#     python --version
-
-# RUN pip install pyopenssl
-
-# ENV GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
-# ENV GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
-# ENV CFLAGS=-fno-wrapv
-
-# RUN python3 -m venv /opt/env/petals
-
-# RUN . /opt/env/petals/bin/activate
-
-# RUN pip install setuptools== 67.7.2 --upgrade --force-reinstall --break-system-packages
-
-# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh && \
-#   bash install_miniconda.sh -b -p /opt/conda && rm install_miniconda.sh
-# ENV PATH="/opt/conda/bin:${PATH}"
-
-# RUN conda install python~=3.8 pip && \
-#     pip install --no-cache-dir torch torchvision torchaudio && \
-#     conda clean --all
-
-# RUN sed -i '<line_number>d' <filename>
-
-# RUN pip install ninja==1.11.1 patchelf==0.17.2.1 torch>=1.9.0 varint==1.0.2 sortedcontainers==2.4.0
-
 RUN python3 -m venv /opt/env/petals
 ENV PATH="/opt/env/petals/bin:$PATH"
-
-# RUN ls -l /opt/env/petals
-
-# WORKDIR /tmp
-
-# RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
-#     tar -xzf go.tar.gz -C /usr/local
-
-# ENV PATH="/usr/local/go/bin:${PATH}"
-
-# RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
-#     cd go-libp2p-daemon/p2pd && \
-#     git checkout v0.3.16 && \
-#     go build . && \
-#     mkdir -p /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli && \
-#     mv -f p2pd /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd && \
-#     chmod +x /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd
 
 WORKDIR /app
 
