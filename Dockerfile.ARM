@@ -32,8 +32,8 @@ RUN apt-get update \
     sed \
     tar \
     zlib1g-dev \
-    python3-dev \
-    python3-pip \
+    # python3-dev \
+    # python3-pip \
     python3.11-venv \
     wget \
     build-essential \
@@ -67,16 +67,16 @@ COPY . ./
 
 # RUN pip3 install --break-system-packages --no-cache-dir  --force-reinstall -Iv grpcio>=1.33.2
 
-# RUN wget -c https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
+RUN wget -c https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
 
-# RUN tar -Jxvf Python-3.9.17.tar.xz
+RUN tar -Jxvf Python-3.9.17.tar.xz
 
-# RUN cd Python-3.9.17 && \
-#     ./configure --enable-optimizations && \
-#     make altinstall && \
-#     update-alternatives --install /usr/bin/python python /usr/local/bin/python3.9 1 && \
-#     update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.9 1 && \
-#     python --version
+RUN cd Python-3.9.17 && \
+    ./configure --enable-optimizations && \
+    make altinstall && \
+    update-alternatives --install /usr/bin/python python /usr/local/bin/python3.9 1 && \
+    update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.9 1 && \
+    python --version
 
 # RUN pip install pyopenssl
 
