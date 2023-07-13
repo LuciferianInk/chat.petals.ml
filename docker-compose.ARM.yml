@@ -23,6 +23,10 @@ services:
     volumes:
       - cache:/root/.cache
       - ./app.py:/app/app.py
+      - ./config.py:/app/config.py
+      - ./utils.py:/app/utils.py
+      - ./websocket_api.py:/app/websocket_api.py
+      - ./http_api.py:/app/http_api.py
       - ./static:/app/static
 
   proxy:
