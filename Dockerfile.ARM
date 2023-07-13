@@ -24,7 +24,7 @@ RUN apt-get update \
     pkgconf \
     gfortran \
     libopenblas-dev \
-    libxsimd-dev \
+    # libxsimd-dev \
     curl \
     git \
     gcc \
