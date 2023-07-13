@@ -98,11 +98,7 @@ COPY . ./
 RUN python3 -m venv /opt/env/petals
 ENV PATH="/opt/env/petals/bin:$PATH"
 
-RUN pip install -r requirements.txt
-
-RUN git clone https://github.com/learning-at-home/hivemind
-
-RUN cd hivemind && pip install . --global-option="--buildgo"
+RUN ls -l /opt/env/petals && asoidjcoasid
 
 WORKDIR /tmp
 
@@ -117,6 +113,28 @@ RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
     go build . && \
     mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
     chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+RUN git clone https://github.com/learning-at-home/hivemind
+
+RUN cd hivemind && pip install . --global-option="--buildgo"
+
+# WORKDIR /tmp
+
+# RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
+#     tar -xzf go.tar.gz -C /usr/local
+
+# ENV PATH="/usr/local/go/bin:${PATH}"
+
+# RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
+#     cd go-libp2p-daemon/p2pd && \
+#     git checkout v0.3.16 && \
+#     go build . && \
+#     mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
+#     chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
 
 RUN rm -rf /tmp/*
 
