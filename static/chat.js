@@ -277,7 +277,7 @@ $(() => {
     }
 
     const prevModel = curModel;
-    curModel = curModel === "bigscience/bloom-petals" ? "bigscience/bloomz-petals" : "bigscience/bloom-petals";
+    curModel = curModel === "enoch/llama-65b-hf";
     resetSession();
 
     $('.other-model-name').text(models[prevModel].name);

@@ -23,6 +23,7 @@ services:
     volumes:
       - cache:/root/.cache
       - ./app.py:/app/app.py
+      - ./static:/app/static
 
   proxy:
     image: traefik:v2.9
