@@ -4,7 +4,7 @@ const models = {
     href: "https://huggingface.co/enoch/llama-65b-hf",
     sepToken: "\n\n",
     stopToken: "</s>",
-    extraStopSequences: ["¶"],
+    // extraStopSequences: ["¶"],
   }
 };
 var curModel = default_model_name;
