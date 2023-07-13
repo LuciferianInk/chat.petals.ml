@@ -1,13 +1,20 @@
 const models = {
+  "artek0chumak/guanaco-65b": {
+    modelCard: "https://huggingface.co/timdettmers/guanaco-65b",
+    license: "https://huggingface.co/timdettmers/guanaco-65b",
+    sepToken: "###",
+    stopToken: "###",
+    extraStopSequences: ["</s>"],
+  },
   "enoch/llama-65b-hf": {
-    name: "LLaMA-65b",
-    href: "https://huggingface.co/enoch/llama-65b-hf",
+    modelCard: "https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md",
+    license: "https://bit.ly/llama-license",
     sepToken: "\n\n",
-    stopToken: "</s>",
-    extraStopSequences: [],
+    stopToken: "\n\n",
+    extraStopSequences: null,
   }
 };
-var curModel = default_model_name;
+var curModel = "artek0chumak/guanaco-65b";
 
 const generationParams = {
   do_sample: 1,
@@ -279,7 +286,7 @@ $(() => {
     }
 
     const prevModel = curModel;
-    curModel = curModel === "enoch/llama-65b-hf";
+    // curModel = curModel === "enoch/llama-65b-hf";
     resetSession();
 
     $('.other-model-name').text(models[prevModel].name);

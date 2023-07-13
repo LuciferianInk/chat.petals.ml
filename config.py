@@ -15,8 +15,8 @@ class ModelInfo:
 
 
 MODELS = [
-    ModelInfo(repo="enoch/llama-65b-hf")
-    # ModelInfo(repo="enoch/llama-65b-hf", adapter="artek0chumak/guanaco-65b"),
+    ModelInfo(repo="enoch/llama-65b-hf"),
+    ModelInfo(repo="enoch/llama-65b-hf", adapter="artek0chumak/guanaco-65b")
     # ModelInfo(repo="bigscience/bloom"),
     # ModelInfo(repo="bigscience/bloomz"),
 ]
