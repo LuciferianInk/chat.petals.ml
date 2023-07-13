@@ -1,6 +1,6 @@
 import os
 import hivemind
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_sock import Sock
 from transformers import AutoTokenizer
