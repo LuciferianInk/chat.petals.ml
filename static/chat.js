@@ -14,7 +14,7 @@ const models = {
     extraStopSequences: null,
   }
 };
-var curModel = "artek0chumak/guanaco-65b";
+var curModel = "enoch/llama-65b-hf";
 
 const generationParams = {
   do_sample: 1,
