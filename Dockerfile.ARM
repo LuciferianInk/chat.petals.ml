@@ -98,7 +98,7 @@ COPY . ./
 RUN python3 -m venv /opt/env/petals
 ENV PATH="/opt/env/petals/bin:$PATH"
 
-RUN ls -l /opt/env/petals && asoidjcoasid
+# RUN ls -l /opt/env/petals
 
 WORKDIR /tmp
 
