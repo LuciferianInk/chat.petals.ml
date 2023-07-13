@@ -4,7 +4,7 @@ const models = {
     href: "https://huggingface.co/enoch/llama-65b-hf",
     sepToken: "\n\n",
     stopToken: "</s>",
-    // extraStopSequences: ["¶"],
+    extraStopSequences: [],
   }
 };
 var curModel = default_model_name;
@@ -145,18 +145,20 @@ function receiveReplica(inputs) {
     const lastReplica = $('.ai-replica .text').last();
     var newText = lastReplica.text() + response.outputs;
     newText = newText.replace(models[curModel].stopToken, "");
-    for (const seq of models[curModel].extraStopSequences) {
-      newText = newText.replace(seq, "");
+    if (models[curModel].extraStopSequences !== null) {
+      for (const seq of models[curModel].extraStopSequences) {
+        newText = newText.replace(seq, "");
+      }
     }
     lastReplica.text(newText);
 
     if (!response.stop && !stop) {
       if (nRequests >= 1) {
-        const stepsPerSecond = totalElapsed / nRequests / 1000;
+        const speed = nRequests / (totalElapsed / 1000);
         $('.speed')
-          .text(`Speed: ${stepsPerSecond.toFixed(1)} sec/token, model: ${models[curModel].name}`)
+        .text(`Speed: ${speed.toFixed(1)} tokens/sec`)
           .show();
-        if (stepsPerSecond >= 3) {
+          if (speed < 0.5) {
           $('.suggest-join').show();
         }
       }

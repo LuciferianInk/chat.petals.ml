@@ -6,6 +6,7 @@ import hivemind
 
 import config
 from app import sock, models
+from utils import safe_decode
 
 logger = hivemind.get_logger(__file__)
 
@@ -54,15 +55,9 @@ def ws_api_generate(ws):
                         top_p=request.get("top_p"),
                         max_length=request.get("max_length"),
                         max_new_tokens=request.get("max_new_tokens"),
-                        # penalty_alpha = request.get("penalty_alpha", None),
-                        # repetition_penalty = request.get("repetition_penalty", 1.0),
-                        # encoder_repetition_penalty = request.get("encoder_repetition_penalty", 1.0),
-                        # no_repeat_ngram_size = request.get("no_repeat_ngram_size", 0),
-                        # encoder_no_repeat_ngram_size = request.get("encoder_no_repeat_ngram_size", 0),
-                        # renormalize_logits = request.get("renormalize_logits", True),
                         session=session,
                     )
-                    outputs = tokenizer.decode(outputs[0, n_input_tokens:])
+                    outputs = safe_decode(tokenizer, outputs[0, n_input_tokens:])
                     all_outputs += outputs
 
                     stop = stop_sequence is None or all_outputs.endswith(stop_sequence)
