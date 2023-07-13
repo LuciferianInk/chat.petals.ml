@@ -98,7 +98,7 @@ COPY . ./
 RUN python3 -m venv /opt/env/petals
 ENV PATH="/opt/env/petals/bin:$PATH"
 
-RUN ls -l /opt/env/petals && asoidjcoasid
+# RUN ls -l /opt/env/petals && asoidjcoasid
 
 WORKDIR /tmp
 
@@ -111,8 +111,8 @@ RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
     cd go-libp2p-daemon/p2pd && \
     git checkout v0.3.16 && \
     go build . && \
-    mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
-    chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
+    mv -f p2pd /opt/env/petals/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
+    chmod +x /opt/env/petals/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
 
 WORKDIR /app
 
