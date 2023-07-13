@@ -14,7 +14,7 @@ services:
       shm_size: '1gb'
     environment:
       MODEL_NAMES: '["enoch/llama-65b-hf"]'
-      DEFAULT_MODEL_NAME: bigscience/bloomz-petals
+      DEFAULT_MODEL_NAME: enoch/llama-65b-hf
     labels:
       - traefik.enable=true
       - traefik.http.routers.relay.rule=Host(`originalsin.ml`,`src.originalsin.ml`)
