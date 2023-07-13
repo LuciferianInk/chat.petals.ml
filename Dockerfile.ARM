@@ -100,29 +100,6 @@ ENV PATH="/opt/env/petals/bin:$PATH"
 
 # RUN ls -l /opt/env/petals
 
-WORKDIR /tmp
-
-RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
-    tar -xzf go.tar.gz -C /usr/local
-
-ENV PATH="/usr/local/go/bin:${PATH}"
-
-RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
-    cd go-libp2p-daemon/p2pd && \
-    git checkout v0.3.16 && \
-    go build . && \
-    mkdir -p /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli && \
-    mv -f p2pd /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd && \
-    chmod +x /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd
-
-WORKDIR /app
-
-RUN pip install -r requirements.txt
-
-RUN git clone https://github.com/learning-at-home/hivemind
-
-RUN cd hivemind && pip install . --global-option="--buildgo"
-
 # WORKDIR /tmp
 
 # RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
@@ -134,8 +111,31 @@ RUN cd hivemind && pip install . --global-option="--buildgo"
 #     cd go-libp2p-daemon/p2pd && \
 #     git checkout v0.3.16 && \
 #     go build . && \
-#     mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
-#     chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
+#     mkdir -p /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli && \
+#     mv -f p2pd /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd && \
+#     chmod +x /opt/env/petals/lib/python3.9/site-packages/hivemind/hivemind_cli/p2pd
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+RUN git clone https://github.com/learning-at-home/hivemind
+
+RUN cd hivemind && pip install . --global-option="--buildgo"
+
+WORKDIR /tmp
+
+RUN curl -fSL --output go.tar.gz https://go.dev/dl/go1.18.10.linux-arm64.tar.gz && \
+    tar -xzf go.tar.gz -C /usr/local
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+RUN git clone https://github.com/learning-at-home/go-libp2p-daemon && \
+    cd go-libp2p-daemon/p2pd && \
+    git checkout v0.3.16 && \
+    go build . && \
+    mv -f p2pd /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd && \
+    chmod +x /usr/local/lib/python3.9/dist-packages/hivemind/hivemind_cli/p2pd
 
 RUN rm -rf /tmp/*
 
