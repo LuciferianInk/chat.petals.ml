@@ -1,18 +1,12 @@
 const models = {
-  "artek0chumak/guanaco-65b": {
-    modelCard: "https://huggingface.co/timdettmers/guanaco-65b",
-    license: "https://huggingface.co/timdettmers/guanaco-65b",
-    sepToken: "###",
-    stopToken: "###",
-    extraStopSequences: ["</s>"],
-  },
-  "enoch/llama-65b-hf": {
-    modelCard: "https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md",
-    license: "https://bit.ly/llama-license",
-    sepToken: "\n\n",
-    stopToken: "\n\n",
-    extraStopSequences: null,
-  }
+    "meta-llama/Llama-2-70b-chat-hf": {
+      modelCard: "https://huggingface.co/meta-llama/Llama-2-70b-chat-hf",
+      license: "https://bit.ly/llama2-license",
+      researchOnly: true,
+      sepToken: "###",
+      stopToken: "###",
+      extraStopSequences: ["</s>"]
+    }
 };
 var curModel = "enoch/llama-65b-hf";
 
